@@ -29,3 +29,10 @@ class Ball:
         if group == 'Boy:Ball':
             # 스스로 없어지기
             game_world.remove_object(self)
+        if group == 'Ball:Zombie':
+            game_world.remove_object(self)
+            pass
+            # game_world.remove_object(self)
+
+    def get_velo(self):
+        return self.velocity

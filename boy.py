@@ -192,10 +192,13 @@ class Boy:
 
 
     def fire_ball(self):
+        # global balls
         if self.ball_count > 0:
             self.ball_count -= 1
             ball = Ball(self.x, self.y, self.face_dir*10)
             game_world.add_object(ball)
+            # for ball in balls:
+            game_world.add_collision_pair('Ball:Zombie', ball, None)
 
     def update(self):
         self.state_machine.update()
@@ -220,3 +223,5 @@ class Boy:
     def handle_collision(self, group, other):
         if group == 'Boy:Ball':
             self.ball_count += 1
+        if group == 'Boy:Zombie':
+            game_framework.quit()
